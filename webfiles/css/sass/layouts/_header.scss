@@ -1,0 +1,26 @@
+@use '../utils/_variables' as *;
+@use "../base/reset";
+@use '../base/_typographies';
+@use '../components/_navbar';
+
+img#presentation{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    max-width: 600px;
+}
+
+header{
+    max-width: $mxw;
+    margin: auto;
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+    margin-bottom: 8rem;
+
+    section{
+        max-width: 550px;
+    }
+
+}
