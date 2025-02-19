@@ -277,9 +277,7 @@ header section {
 #jv-and-tcg div:first-of-type {
     margin-bottom: 3rem;
 }
-#jv-and-tcg div:first-of-type article {
-    margin-left: 2.5rem;
-}
+
 #jv-and-tcg div:last-of-type {
     flex-direction: row-reverse;
 }
@@ -540,6 +538,65 @@ footer #copyrights {
         background: radial-gradient(circle at bottom left, #ed4621 0%, #a11368 200%);
     }
 }
+
+@media screen and (max-width: 768px) {
+    body{
+        max-width: 768px;
+        margin: 0 auto;
+    }
+    
+    #intro{
+        max-width: 350px;
+    }
+    
+    #jv-and-tcg div:first-of-type, #jv-and-tcg div:last-of-type  {
+        flex-direction: column;
+    }
+    
+
+    #jv-and-tcg p, #jv-and-tcg p + ul {
+        padding: 0;
+    }
+
+    img#presentation{
+        right: 0;
+    }
+    main section h3{
+        margin-top: 2rem;
+    }
+
+    #cosplayContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    #partners .partners-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+
+    #partners .partners-container div {
+        width: auto;
+    }
+    #partners img{
+        width: 80px;
+        height: auto;
+    }
+
+    footer .mxwdth {
+        flex-direction: column;
+        width: 100%;
+    }
+    footer .mxwdth section {
+        width: 100%;
+    }
+
+}
+
+
+
+
+
 main {
     max-width: 1150px;
     margin: auto;
