@@ -358,7 +358,7 @@ header section {
     width: auto;
 }
 #partners img {
-    width: 100px;
+    width: 166px;
 }
 footer {
     width: 100%;
@@ -535,6 +535,15 @@ footer #copyrights {
     }
 }
 @media screen and (max-width: 1299px) {
+    #cosplayContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #partners img{
+        width: 100px;
+        height: auto;
+    }
     footer {
         margin-top: 1rem;
         overflow: hidden;
