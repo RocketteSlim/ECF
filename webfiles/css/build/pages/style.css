@@ -346,18 +346,19 @@ header section {
 #partners .partners-container {
     display: flex;
     flex-direction: row;
-    gap: 1.25rem;
+    gap: 1rem;
     width: 100%;
+    justify-content: center;
 }
 #partners .partners-container div {
     border-radius: 1rem;
     background-color: rgba(0, 0, 0, 0.15);
     padding: 2.5rem 1.25rem;
     box-sizing: border-box;
-    width: 20%;
+    width: auto;
 }
 #partners img {
-    width: 160px;
+    width: 100px;
 }
 footer {
     width: 100%;
@@ -514,7 +515,18 @@ footer #copyrights {
     text-align: center;
     border-top: 2px solid #fff;
 }
+
+@media screen and (max-width: 900px){
+    #cosplayContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+
 @media screen and (max-width: 1920px) {
+    
     footer svg {
         height: 185px;
     }
