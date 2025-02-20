@@ -184,6 +184,7 @@ button {
     color: #565656;
 }
 nav {
+    position: sticky;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -515,13 +516,83 @@ footer #copyrights {
     text-align: center;
     border-top: 2px solid #fff;
 }
-
-@media screen and (max-width: 900px){
-    #cosplayContainer{
-        flex-direction: column;
-        align-items: center;
-    }
+/* Style du bouton burger */
+#burger-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 42px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+#burger-icon span {
+    display: block;
+    height: 4px;
+    width: 40px;
+    background-color: white;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation du burger en croix */
+#burger-icon.open span:first-child {
+    transform: translateY(10px) rotate(45deg);
+}
+#burger-icon.open span:nth-child(2) {
+    opacity: 0;
+}
+#burger-icon.open span:last-child {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Style du menu */
+#menu {
+    position: absolute; /* Fixe le menu en haut à droite */
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 80px 20px;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+}
+
+/* Affichage du menu lorsqu'il est ouvert */
+#menu.open {
+    transform: translateX(0);
+}
+
+/* Style des liens */
+#menu a {
+    color: white;
+    text-decoration: none;
+    font-family: "Montserrat Semi Bold";
+    font-size: 1.2rem;
+    margin: 15px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Animation d'apparition des liens */
+#menu.open a {
+    opacity: 1;
+}
+
+
 
 
 
@@ -557,6 +628,12 @@ footer #copyrights {
     }
     footer .underwave-container::before {
         background: radial-gradient(circle at bottom left, #ed4621 0%, #a11368 200%);
+    }
+}
+@media screen and (max-width: 900px){
+    #cosplayContainer{
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -598,9 +675,11 @@ footer #copyrights {
 
     #partners .partners-container div {
         width: auto;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
     }
     #partners img{
-        width: 80px;
+        width: 50px;
         height: auto;
     }
 
@@ -611,9 +690,61 @@ footer #copyrights {
     footer .mxwdth section {
         width: 100%;
     }
+}
+
+@media screen and (max-width: 580px) {
+    img#presentation {
+        width: 100%;
+    }
+    #cosplayContainer img {
+        max-width: 500px;
+        width: 100%;
+    }
+    #partners img{
+        width: 35px;
+        height: auto;
+    }
+    #partners .partners-container div {
+        width: auto;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
 
 }
 
+
+
+@media screen and (max-width: 499px) {
+    body{
+        max-width: 499px;
+        margin: 0 auto;
+    }
+    #jv-and-tcg img {
+        max-width: 300px;
+        width: 100%;
+    }
+    #cosplayContainer img {
+        max-width: 300px;
+        width: 100%;   
+    }
+    #partners img{
+        width: 30px;
+        height: auto;
+    }
+    
+}
+
+@media screen and (max-width: 320px) {
+    
+    
+    #cosplayContainer img {
+        max-width: 290px;  
+        width: 100%; 
+    }
+    #jv-and-tcg img {
+        width: 290px;
+    }
+} 
 
 
 
