@@ -33,11 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // ====== GESTION DU FORMULAIRE ======
     // Sélection du formulaire
     const form = document.querySelector("form");
 
-    // Ajout de l'écouteur d'événements sur la soumission du formulaire
     form.addEventListener("submit", function (event) {
         // Empêche l'envoi du formulaire par défaut pour notre validation
         event.preventDefault();
@@ -64,32 +62,26 @@ document.addEventListener("DOMContentLoaded", function () {
             isValid = false;
         }
 
-        // Validation des noms avec une expression régulière
+        // Validation des différentes inputs selon les restrictions demandées à l'aide d'expressions régulières
         // Accepte les lettres, les accents et les tirets, longueur entre 2 et 50 caractères
         const nameRegex = /^[A-Za-zÀ-ÿ-]{2,50}$/;
         
-        // Validation du nom
         if (!nameRegex.test(lastname.value.trim())) showError(lastname);
         else resetError(lastname);
 
-        // Validation du prénom
         if (!nameRegex.test(firstname.value.trim())) showError(firstname);
         else resetError(firstname);
 
-        // Validation de l'email avec une expression régulière basique
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(mail.value.trim())) showError(mail);
         else resetError(mail);
 
-        // Validation de la longueur de l'objet
         if (object.value.trim().length < 3 || object.value.trim().length > 250) showError(object);
         else resetError(object);
 
-        // Validation de la longueur du message
         if (message.value.trim().length < 3 || message.value.trim().length > 250) showError(message);
         else resetError(message);
 
-        // Validation de la case à cocher des mentions légales
         if (!agreement.checked) {
             alert("Vous devez accepter les mentions légales.");
             isValid = false;
@@ -97,17 +89,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Si le formulaire est valide
         if (isValid) {
-            // Important : On sélectionne le bouton submit AVANT la réinitialisation
-            const submitButton = form.querySelector('input[type="submit"]');
+            const submitButton = form.querySelector('button[type="submit"]');
             
             // Message de succès
             alert("Formulaire envoyé avec succès !");
             
-            // Désactivation du bouton
-            submitButton.setAttribute("disabled", "");
-            
             // Réinitialisation du formulaire
             form.reset();
+            // Désactivation du bouton
+            submitButton.setAttribute("disabled", "disabled");
+            
         }
+    });
+});
+
+// Au clic sur une image du main elle s'affiche en pleine écran 
+document.querySelectorAll('main img').forEach(img => {
+    img.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        document.body.appendChild(overlay);
+        const imgFull = document.createElement('img');
+        imgFull.src = img.src;
+        imgFull.className = 'full-screen';
+        overlay.appendChild(imgFull);
+        document.body.classList.add('no-scroll');
+
+        // Fermeture de l'overlay au clic
+        overlay.addEventListener('click', () => {
+            document.body.removeChild(overlay);
+            document.body.classList.remove('no-scroll');
+        });
     });
 });
