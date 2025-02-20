@@ -516,11 +516,12 @@ footer #copyrights {
     text-align: center;
     border-top: 2px solid #fff;
 }
+
 /* Style du bouton burger */
-#burger-icon {
+.burger-icon {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 40px;
+    right: 30%;
     width: 50px;
     height: 42px;
     background: none;
@@ -532,7 +533,13 @@ footer #copyrights {
     justify-content: space-between;
 }
 
-#burger-icon span {
+.burger-icon.menu-button {
+    position: absolute;
+    top: 20px;
+    right: 40%;
+}
+
+.burger-icon span {
     display: block;
     height: 4px;
     width: 40px;
@@ -541,25 +548,25 @@ footer #copyrights {
     transition: all 0.3s ease-in-out;
 }
 
-/* Animation du burger en croix */
-#burger-icon.open span:first-child {
-    transform: translateY(10px) rotate(45deg);
-}
-#burger-icon.open span:nth-child(2) {
-    opacity: 0;
-}
-#burger-icon.open span:last-child {
-    transform: translateY(-10px) rotate(-45deg);
+/* Animation du burger en croix - maintenant avec une spécificité plus élevée */
+.burger-icon.open span:first-child {
+    transform: translateY(19px) rotate(45deg);
 }
 
+.burger-icon.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-icon.open span:last-child {
+    transform: translateY(-19px) rotate(-45deg);
+}
 /* Style du menu */
 #menu {
-    position: absolute; /* Fixe le menu en haut à droite */
+    position: fixed; /* Changed to fixed for better positioning */
     top: 0;
     right: 0;
     width: 250px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
+    background: #183054b4;
     padding: 80px 20px;
     box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -569,6 +576,21 @@ footer #copyrights {
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     z-index: 999;
+}
+
+/* Classe pour afficher le menu */
+#menu.open {
+    transform: translateX(0);
+}
+
+#menu a {
+    /* Nous ajoutons une transition pour rendre le changement de couleur plus fluide */
+    transition: color 0.3s ease-in-out;
+}
+
+/* Effet de survol sur les liens du menu */
+#menu a:hover {
+    color: #ED4621;
 }
 
 /* Affichage du menu lorsqu'il est ouvert */
@@ -593,11 +615,23 @@ footer #copyrights {
 }
 
 
+html {
+    scroll-behavior: smooth;
+}
 
+footer a:hover, footer button:hover {
+    color: #ED4621;
+}
+
+.socials-links a:hover img {
+    filter: invert(1);
+}
 
 
 @media screen and (max-width: 1920px) {
     
+
+
     footer svg {
         height: 185px;
     }
@@ -641,6 +675,9 @@ footer #copyrights {
     body{
         max-width: 768px;
         margin: 0 auto;
+    }
+    .burger-icon {
+        right: 20px;
     }
     
     #intro{
@@ -719,6 +756,10 @@ footer #copyrights {
         max-width: 499px;
         margin: 0 auto;
     }
+    nav a{
+        display: flex;
+        flex-direction: column;
+    }
     #jv-and-tcg img {
         max-width: 300px;
         width: 100%;
@@ -766,3 +807,10 @@ main section h3 {
     margin-bottom: 2rem;
     text-align: center;
 } /*# sourceMappingURL=home.css.map */
+
+
+input[type="submit"].submitted {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
